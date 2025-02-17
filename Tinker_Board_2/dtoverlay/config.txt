@@ -26,11 +26,14 @@ conf:eth_wakeup=on
 ##### Tinker Power Management #####
 
 cpu_governor=interactive
-gpu_governor=simple_ondemand
 a53_minfreq=408000
 a53_maxfreq=1512000
 a72_minfreq=408000
 a72_maxfreq=2016000
+
+gpu_governor=simple_ondemand
+t86x_minfreq=200000000
+t86x_maxfreq=800000000
 
 ##### List of device tree overlays to load. Format: overlay=<dtbo name, no extension> <dtbo2> ... #####
 

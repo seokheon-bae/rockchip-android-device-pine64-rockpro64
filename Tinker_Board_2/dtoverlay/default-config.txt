@@ -10,3 +10,11 @@
 #intf:pwm1=off
 #intf:pwm3a=off
 conf:auto_ums=on
+cpu_governor=interactive
+a53_minfreq=408000
+a53_maxfreq=1512000
+a72_minfreq=408000
+a72_maxfreq=2016000
+gpu_governor=simple_ondemand
+t86x_minfreq=200000000
+t86x_maxfreq=800000000
