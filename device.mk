@@ -56,6 +56,10 @@ PRODUCT_COPY_FILES += \
     device/asus/tinker_board_2/media_profiles_default.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml \
     device/asus/tinker_board_2/media_profiles_imx219.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_imx219.xml
 
+# kiosk
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/kiosk/kiosk_set_do.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/kiosk_set_do.sh
+
 # led
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/led/led.sh:$(TARGET_COPY_OUT_VENDOR)/bin/led.sh

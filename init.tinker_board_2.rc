@@ -24,6 +24,17 @@ on property:sys.boot_completed=1
 
     trigger sys-boot-completed-set
 
+    # kiosk
+    start kiosk_set_do
+
+service kiosk_set_do /system/bin/sh /system/bin/kiosk_set_do.sh
+    class late_start
+    user shell
+    group shell log readproc
+    seclabel u:r:shell:s0
+    oneshot
+    disabled
+
 # We want one opportunity per boot to enable zram, so we
 # use a trigger we fire from the above stanza. If
 # persist.sys.zram_enabled becomes true after boot,
