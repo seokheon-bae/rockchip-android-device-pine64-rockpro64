@@ -9,13 +9,4 @@
         </interface>
         <fqname>@1.0::IHdmiCec/default</fqname>
     </hal>
-    <hal format="hidl">
-        <name>android.hardware.gnss</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IGnss</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
 </manifest>

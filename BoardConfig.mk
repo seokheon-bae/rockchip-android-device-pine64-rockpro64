@@ -33,8 +33,11 @@ TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a15
 
 PRODUCT_KERNEL_ARCH := arm64
-PRODUCT_KERNEL_DTS ?= rk3399-tinker-board-2
+PRODUCT_KERNEL_DTS ?= rk3399-rockpro64-android
+# tinker_board_2_defconfig already has everything RockPro64 needs
+# (ES8316, AP6XXX/bcmdhd, FUSB30X, FAN53555/SYR82x, RK808, FIQ debugger)
 PRODUCT_KERNEL_CONFIG ?= tinker_board_2_defconfig
+# Generic RK3399 config (rk3399_defconfig + 115200 baud); no board-ID code
 PRODUCT_UBOOT_CONFIG ?= tinker_board_2
 
 DISPLAY_BUILD_NUMBER := true
@@ -94,13 +97,13 @@ ENABLE_CPUSETS := true
 WITH_DEXPREOPT := true
 
 BOARD_NFC_SUPPORT := false
-BOARD_HAS_GPS := true
+BOARD_HAS_GPS := false
 
-BOARD_GRAVITY_SENSOR_SUPPORT := true
+BOARD_GRAVITY_SENSOR_SUPPORT := false
 BOARD_COMPASS_SENSOR_SUPPORT := false
 BOARD_GYROSCOPE_SENSOR_SUPPORT := false
 BOARD_PROXIMITY_SENSOR_SUPPORT := false
-BOARD_LIGHT_SENSOR_SUPPORT := true
+BOARD_LIGHT_SENSOR_SUPPORT := false
 BOARD_PRESSURE_SENSOR_SUPPORT := false
 BOARD_TEMPERATURE_SENSOR_SUPPORT := false
 BOARD_USB_HOST_SUPPORT := true
@@ -117,8 +120,8 @@ BUILD_WITH_GOOGLE_FRP := false
 # Add widevine L3 support
 BOARD_WIDEVINE_OEMCRYPTO_LEVEL := 3
 
-# camera enable
-BOARD_CAMERA_SUPPORT := true
+# camera (overridden in RockPro64/BoardConfig.mk)
+BOARD_CAMERA_SUPPORT := false
 BOARD_CAMERA_SUPPORT_EXT := true
 ALLOW_MISSING_DEPENDENCIES=true
 
@@ -154,4 +157,4 @@ BOARD_USES_DTOVERLAY_PARTITION := true
 BUILD_BROKEN_DUP_RULES := true
 
 # For cellular
-BOARD_SUPPORT_MODEM := true
+BOARD_SUPPORT_MODEM := false

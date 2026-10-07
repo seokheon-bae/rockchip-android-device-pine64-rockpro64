@@ -25,15 +25,17 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 # Inherit from those products. Most specific first.
 $(call inherit-product, device/pine64/rockpro64/device.mk)
 $(call inherit-product, device/rockchip/common/device.mk)
-$(call inherit-product, device/asus/common/device.mk)
+# device/asus/common/device.mk is not inherited: it only adds ASUS apps
+# (ASUSToolkit, DMClient, TinkerConfig, KioskMode) and AsusDebugger, whose
+# Android.mk falls back to Tinker Board 1 (RK3288) binaries for other products.
 
 PRODUCT_CHARACTERISTICS := tablet
 
-PRODUCT_NAME := Tinker_Board_2
-PRODUCT_DEVICE := Tinker_Board_2
-PRODUCT_BRAND := asus
-PRODUCT_MODEL := Tinker Board 2
-PRODUCT_MANUFACTURER := asus
+PRODUCT_NAME := RockPro64
+PRODUCT_DEVICE := RockPro64
+PRODUCT_BRAND := pine64
+PRODUCT_MODEL := RockPro64
+PRODUCT_MANUFACTURER := pine64
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 
 PRODUCT_PACKAGES += \
@@ -48,13 +50,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.product.ota.host = 192.168.1.1:8888 \
     ro.sf.lcd_density=240
 
-# Append the manifest files for Tinker Board 2 here since this will be defined
+# Append the manifest files for RockPro64 here since this will be defined
 # in device/rockchip/common/BoardConfig.mk to use the default one.
 DEVICE_MANIFEST_FILE += device/pine64/rockpro64/manifest.xml
 
-ifeq ($(strip $(PRODUCT_NAME)), Tinker_Board_2)
-PRODUCT_PACKAGES += \
-    libmraa \
-    libmraajava
-endif
 

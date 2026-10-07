@@ -50,15 +50,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.rockpro64.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.rockpro64.rc \
     $(LOCAL_PATH)/ueventd.rockpro64.rc:$(TARGET_COPY_OUT_VENDOR)/etc/ueventd.rc \
-    $(LOCAL_PATH)/libmraa/lib64/libc++_shared.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libc++_shared.so \
     $(LOCAL_PATH)/wake_lock_filter.xml:system/etc/wake_lock_filter.xml \
     device/pine64/rockpro64/package_performance.xml:$(TARGET_COPY_OUT_ODM)/etc/package_performance.xml \
-    device/pine64/rockpro64/media_profiles_default.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml \
-    device/pine64/rockpro64/media_profiles_imx219.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_imx219.xml
-
-# kiosk
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/kiosk/kiosk_set_do.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/kiosk_set_do.sh
+    device/pine64/rockpro64/media_profiles_default.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml
 
 # led
 PRODUCT_COPY_FILES += \
@@ -66,10 +60,6 @@ PRODUCT_COPY_FILES += \
 
 BOARD_SEPOLICY_DIRS += \
     device/pine64/rockpro64/sepolicy/led
-
-# Touch
-PRODUCT_COPY_FILES += \
-    device/pine64/rockpro64/touch/fts_ts.idc:system/usr/idc/fts_ts.idc
 
 #
 ## setup boot-shutdown animation configs.
@@ -241,18 +231,10 @@ PRODUCT_COPY_FILES += \
 BOARD_SEPOLICY_DIRS += \
     device/pine64/rockpro64/sepolicy/dtoverlay \
     device/pine64/rockpro64/sepolicy/vendor \
-    device/pine64/rockpro64/sepolicy/AsusDebugger \
     device/pine64/rockpro64/sepolicy/media \
     device/pine64/rockpro64/sepolicy/system \
-    device/pine64/rockpro64/sepolicy/gps \
     device/pine64/rockpro64/sepolicy/rtc
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/cpu_gpu_utility.sh:$(TARGET_COPY_OUT_VENDOR)/bin/cpu_gpu_utility.sh
 
-PRODUCT_PACKAGES += \
-    android.hardware.gnss@1.0-impl android.hardware.gnss@1.0-service
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/gps/arm64-v8a/gps.default.so:vendor/lib64/hw/gps.default.so \
-    $(LOCAL_PATH)/gps/gps_cfg.inf:vendor/etc/gps_cfg.inf

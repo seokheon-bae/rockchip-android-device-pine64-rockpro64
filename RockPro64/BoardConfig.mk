@@ -1,15 +1,16 @@
 include device/pine64/rockpro64/BoardConfig.mk
 
-BOARD_SENSOR_ST := true
-BOARD_SENSOR_COMPASS_AK8963-64 := true
+# RockPro64 has no on-board sensors
+BOARD_SENSOR_ST := false
 BOARD_SENSOR_MPU_PAD := false
-BOARD_COMPASS_SENSOR_SUPPORT := true
-BOARD_GYROSCOPE_SENSOR_SUPPORT := true
+BOARD_COMPASS_SENSOR_SUPPORT := false
+BOARD_GYROSCOPE_SENSOR_SUPPORT := false
 CAMERA_SUPPORT_AUTOFOCUS:= false
 
-BOARD_CAMERA_SUPPORT := true
+# No MIPI camera by default (rkisp HAL off); USB (UVC) cameras via the external HAL
+BOARD_CAMERA_SUPPORT := false
 BOARD_CAMERA_SUPPORT_EXT := true
-PRODUCT_KERNEL_DTS := rk3399-tinker-board-2
+PRODUCT_KERNEL_DTS := rk3399-rockpro64-android
 
 # AB image definition
 BOARD_USES_AB_IMAGE := false

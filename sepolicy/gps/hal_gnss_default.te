@@ -1,5 +1,0 @@
-allow hal_gnss_default rild:unix_stream_socket connectto;
-allow hal_gnss_default default_prop:file { getattr };
-allow hal_gnss_default apex_mnt_dir:dir { read open };
-vndbinder_use(hal_gnss_default)
-

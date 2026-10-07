@@ -56,7 +56,8 @@
 #/dev/ttyS3                0600   gps        gps
 /dev/gps                  0660   gps        gps
 
-# for BT
+# for BT (UART0 = Broadcom BT on the AW-CM256SM module)
+/dev/ttyS0                0660   bluetooth  net_bt
 /dev/vflash               0660   bluetooth  net_bt
 /dev/ttyS1                0660   bluetooth  net_bt
 /dev/ttyS2                0660   bluetooth  net_bt
@@ -216,5 +217,4 @@
 /dev/spidev5.0 0666 root root
 
 # For 40 pin UART
-/dev/ttyS0 0666 root root
 /dev/ttyS4 0666 root root

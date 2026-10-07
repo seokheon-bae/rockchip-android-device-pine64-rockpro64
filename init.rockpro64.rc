@@ -24,17 +24,6 @@ on property:sys.boot_completed=1
 
     trigger sys-boot-completed-set
 
-    # kiosk
-    start kiosk_set_do
-
-service kiosk_set_do /system/bin/sh /system/bin/kiosk_set_do.sh
-    class late_start
-    user shell
-    group shell log readproc
-    seclabel u:r:shell:s0
-    oneshot
-    disabled
-
 # We want one opportunity per boot to enable zram, so we
 # use a trigger we fire from the above stanza. If
 # persist.sys.zram_enabled becomes true after boot,
@@ -55,7 +44,6 @@ on boot
     chown system system /sys/class/backlight/panel_backlight-0/brightness
     chown system system /sys/class/backlight/panel_backlight-1/brightness
 
-    setprop vendor.asus_debugger_running 0
 
     # update cpusets feature nodes for rk3399 tablet
     write /dev/cpuset/foreground/cpus 0-5
@@ -69,7 +57,7 @@ on boot
     # reduce schedul time to improve io performance
     write /sys/kernel/debug/sched_features NO_ENERGY_AWARE
 
-    # for bmp splash
+    # for bmp splash (partition 13; mmc1 = SD, mmc2 = eMMC per rk3399.dtsi aliases)
     chmod 0666 /dev/block/mmcblk2p13
     chmod 0666 /dev/block/mmcblk1p13
 
@@ -117,33 +105,3 @@ service vendor.led /vendor/bin/led.sh
 
 on property:vendor.boot_completed=1
     start cpu_gpu_utility
-
-# asus-debugger-d
-service asus-dbug-d /vendor/bin/asus-debugger-d
-    user root
-    group root log
-    group root system
-    disabled
-
-on property:sys.asus_debugger_running=1
-    start asus-dbug-d
-
-on property:persist.sys.run_debugger=1
-    start asus-dbug-d
-    setprop vendor.run_debugger 1
-
-on property:persist.sys.run_debugger=0
-    setprop vendor.run_debugger 0
-
-on property:sys.asus_debugger_running=3
-    stop asus-dbug-d
-    setprop vendor.asus_debugger_running 3
-
-on property:sys.asus_debugger_running=1
-    restorecon /dev/socket/asus-debugger
-
-on property:sys.asus_debugger_running=2
-    restorecon /dev/socket/asus-debugger
-
-on property:vendor.asus_debugger_running=2
-    setprop sys.asus_debugger_running 2
