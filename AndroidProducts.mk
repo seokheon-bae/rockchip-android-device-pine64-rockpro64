@@ -15,8 +15,8 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/Tinker_Board_2/Tinker_Board_2.mk \
+    $(LOCAL_DIR)/RockPro64/RockPro64.mk \
 
 COMMON_LUNCH_CHOICES := \
-    Tinker_Board_2-userdebug \
-    Tinker_Board_2-user \
+    RockPro64-userdebug \
+    RockPro64-user \

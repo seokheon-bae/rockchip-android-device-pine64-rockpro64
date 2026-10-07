@@ -1,4 +1,4 @@
-include device/asus/tinker_board_2/BoardConfig.mk
+include device/pine64/rockpro64/BoardConfig.mk
 
 BOARD_SENSOR_ST := true
 BOARD_SENSOR_COMPASS_AK8963-64 := true
@@ -18,11 +18,11 @@ BOARD_HAS_RK_4G_MODEM := false
 
 ifeq ($(strip $(BOARD_USES_AB_IMAGE)), true)
     include device/rockchip/common/BoardConfig_AB.mk
-    TARGET_RECOVERY_FSTAB := device/asus/tinker_board_2/Tinker_Board_2/recovery.fstab_AB
+    TARGET_RECOVERY_FSTAB := device/pine64/rockpro64/RockPro64/recovery.fstab_AB
 endif
 
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/asus/tinker_board_2/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/pine64/rockpro64/bluetooth
 
-PRODUCT_FSTAB_TEMPLATE := device/asus/tinker_board_2/Tinker_Board_2/fstab.in
+PRODUCT_FSTAB_TEMPLATE := device/pine64/rockpro64/RockPro64/fstab.in
 
 TARGET_ROCKCHIP_PCBATEST := false

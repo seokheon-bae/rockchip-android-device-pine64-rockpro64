@@ -19,11 +19,11 @@ PRODUCT_SHIPPING_API_LEVEL := 31
 PRODUCT_DTBO_TEMPLATE := $(LOCAL_PATH)/dt-overlay.in
 PRODUCT_BOOT_DEVICE := fe330000.sdhci,fe320000.dwmmc
 include device/rockchip/common/build/rockchip/DynamicPartitions.mk
-include device/asus/tinker_board_2/Tinker_Board_2/BoardConfig.mk
+include device/pine64/rockpro64/RockPro64/BoardConfig.mk
 include device/rockchip/common/BoardConfig.mk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 # Inherit from those products. Most specific first.
-$(call inherit-product, device/asus/tinker_board_2/device.mk)
+$(call inherit-product, device/pine64/rockpro64/device.mk)
 $(call inherit-product, device/rockchip/common/device.mk)
 $(call inherit-product, device/asus/common/device.mk)
 
@@ -39,7 +39,7 @@ PRODUCT_AAPT_PREF_CONFIG := hdpi
 PRODUCT_PACKAGES += \
     SoundRecorder
 
-PRODUCT_PACKAGE_OVERLAYS += device/asus/tinker_board_2/Tinker_Board_2/overlay
+PRODUCT_PACKAGE_OVERLAYS += device/pine64/rockpro64/RockPro64/overlay
 # Get the long list of APNs
 PRODUCT_COPY_FILES += vendor/rockchip/common/phone/etc/apns-full-conf.xml:system/etc/apns-conf.xml
 PRODUCT_COPY_FILES += vendor/rockchip/common/phone/etc/spn-conf.xml:system/etc/spn-conf.xml
@@ -50,7 +50,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Append the manifest files for Tinker Board 2 here since this will be defined
 # in device/rockchip/common/BoardConfig.mk to use the default one.
-DEVICE_MANIFEST_FILE += device/asus/tinker_board_2/manifest.xml
+DEVICE_MANIFEST_FILE += device/pine64/rockpro64/manifest.xml
 
 ifeq ($(strip $(PRODUCT_NAME)), Tinker_Board_2)
 PRODUCT_PACKAGES += \

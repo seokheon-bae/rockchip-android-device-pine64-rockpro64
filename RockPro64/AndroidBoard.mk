@@ -5,4 +5,4 @@
 -include device/rockchip/common/build/rockchip/RebuildDtboImg.mk
 
 # generate parameter.txt for device
--include device/asus/tinker_board_2/Tinker_Board_2/RebuildParameter.mk
+-include device/pine64/rockpro64/RockPro64/RebuildParameter.mk

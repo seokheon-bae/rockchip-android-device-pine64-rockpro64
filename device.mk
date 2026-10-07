@@ -48,13 +48,13 @@ PRODUCT_COPY_FILES += \
     vendor/rockchip/common/bin/$(TARGET_ARCH)/busybox:recovery/root/sbin/busybox
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/init.tinker_board_2.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.tinker_board_2.rc \
-    $(LOCAL_PATH)/ueventd.tinker_board_2.rc:$(TARGET_COPY_OUT_VENDOR)/etc/ueventd.rc \
+    $(LOCAL_PATH)/init.rockpro64.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.rockpro64.rc \
+    $(LOCAL_PATH)/ueventd.rockpro64.rc:$(TARGET_COPY_OUT_VENDOR)/etc/ueventd.rc \
     $(LOCAL_PATH)/libmraa/lib64/libc++_shared.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libc++_shared.so \
     $(LOCAL_PATH)/wake_lock_filter.xml:system/etc/wake_lock_filter.xml \
-    device/asus/tinker_board_2/package_performance.xml:$(TARGET_COPY_OUT_ODM)/etc/package_performance.xml \
-    device/asus/tinker_board_2/media_profiles_default.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml \
-    device/asus/tinker_board_2/media_profiles_imx219.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_imx219.xml
+    device/pine64/rockpro64/package_performance.xml:$(TARGET_COPY_OUT_ODM)/etc/package_performance.xml \
+    device/pine64/rockpro64/media_profiles_default.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml \
+    device/pine64/rockpro64/media_profiles_imx219.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_imx219.xml
 
 # kiosk
 PRODUCT_COPY_FILES += \
@@ -65,11 +65,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/led/led.sh:$(TARGET_COPY_OUT_VENDOR)/bin/led.sh
 
 BOARD_SEPOLICY_DIRS += \
-    device/asus/tinker_board_2/sepolicy/led
+    device/pine64/rockpro64/sepolicy/led
 
 # Touch
 PRODUCT_COPY_FILES += \
-    device/asus/tinker_board_2/touch/fts_ts.idc:system/usr/idc/fts_ts.idc
+    device/pine64/rockpro64/touch/fts_ts.idc:system/usr/idc/fts_ts.idc
 
 #
 ## setup boot-shutdown animation configs.
@@ -108,12 +108,12 @@ endif
 ifeq ($(strip $(BOARD_USE_ANDROIDNN)), true)
 # ARMNN
 PRODUCT_COPY_FILES += \
-    device/asus/tinker_board_2/armnn/android.hardware.neuralnetworks@1.1-service-armnn.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.neuralnetworks@1.1-service-armnn.rc \
-    device/asus/tinker_board_2/armnn/android.hardware.neuralnetworks@1.1-service-armnn:$(TARGET_COPY_OUT_VENDOR)/bin/hw/android.hardware.neuralnetworks@1.1-service-armnn \
-    device/asus/tinker_board_2/armnn/tuned_data:$(TARGET_COPY_OUT_VENDOR)/etc/armnn/tuned_data
+    device/pine64/rockpro64/armnn/android.hardware.neuralnetworks@1.1-service-armnn.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.neuralnetworks@1.1-service-armnn.rc \
+    device/pine64/rockpro64/armnn/android.hardware.neuralnetworks@1.1-service-armnn:$(TARGET_COPY_OUT_VENDOR)/bin/hw/android.hardware.neuralnetworks@1.1-service-armnn \
+    device/pine64/rockpro64/armnn/tuned_data:$(TARGET_COPY_OUT_VENDOR)/etc/armnn/tuned_data
 
 PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,device/asus/tinker_board_2/armnn/bin,$(TARGET_COPY_OUT_VENDOR)/etc/armnn/bin)
+    $(call find-copy-subdir-files,*,device/pine64/rockpro64/armnn/bin,$(TARGET_COPY_OUT_VENDOR)/etc/armnn/bin)
 endif
 
 ifeq ($(BOARD_CAMERA_SUPPORT),true)
@@ -129,7 +129,7 @@ endif
 
 ifeq ($(BOARD_CAMERA_SUPPORT_EXT),true)
 PRODUCT_COPY_FILES += \
-	device/asus/tinker_board_2/external_camera_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/external_camera_config.xml \
+	device/pine64/rockpro64/external_camera_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/external_camera_config.xml \
 	frameworks/native/data/etc/android.hardware.camera.external.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.external.xml
 
 PRODUCT_PACKAGES += \
@@ -171,7 +171,7 @@ BOARD_ROCKCHIP_THERMAL := true
 $(call inherit-product, device/rockchip/common/modules/thermal.mk)
 
 PRODUCT_COPY_FILES += \
-    device/asus/tinker_board_2/public.libraries.txt:vendor/etc/public.libraries.txt
+    device/pine64/rockpro64/public.libraries.txt:vendor/etc/public.libraries.txt
 
 #fireware for dp
 PRODUCT_COPY_FILES += \
@@ -239,13 +239,13 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.mount_all.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.mount_all.rc
 
 BOARD_SEPOLICY_DIRS += \
-    device/asus/tinker_board_2/sepolicy/dtoverlay \
-    device/asus/tinker_board_2/sepolicy/vendor \
-    device/asus/tinker_board_2/sepolicy/AsusDebugger \
-    device/asus/tinker_board_2/sepolicy/media \
-    device/asus/tinker_board_2/sepolicy/system \
-    device/asus/tinker_board_2/sepolicy/gps \
-    device/asus/tinker_board_2/sepolicy/rtc
+    device/pine64/rockpro64/sepolicy/dtoverlay \
+    device/pine64/rockpro64/sepolicy/vendor \
+    device/pine64/rockpro64/sepolicy/AsusDebugger \
+    device/pine64/rockpro64/sepolicy/media \
+    device/pine64/rockpro64/sepolicy/system \
+    device/pine64/rockpro64/sepolicy/gps \
+    device/pine64/rockpro64/sepolicy/rtc
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/cpu_gpu_utility.sh:$(TARGET_COPY_OUT_VENDOR)/bin/cpu_gpu_utility.sh
