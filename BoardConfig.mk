@@ -34,9 +34,11 @@ TARGET_2ND_CPU_VARIANT := cortex-a15
 
 PRODUCT_KERNEL_ARCH := arm64
 PRODUCT_KERNEL_DTS ?= rk3399-rockpro64-android
-# tinker_board_2_defconfig already has everything RockPro64 needs
+# tinker_board_2_defconfig + rockpro64.config fragment (disables REGULATOR_TINKER,
+# which breaks the SYR827/SYR828 VSEL handling on RockPro64). The defconfig has
+# the rest
 # (ES8316, AP6XXX/bcmdhd, FUSB30X, FAN53555/SYR82x, RK808, FIQ debugger)
-PRODUCT_KERNEL_CONFIG ?= tinker_board_2_defconfig
+PRODUCT_KERNEL_CONFIG ?= tinker_board_2_defconfig rockpro64.config
 # Generic RK3399 config (rk3399_defconfig + 115200 baud); no board-ID code
 PRODUCT_UBOOT_CONFIG ?= tinker_board_2
 
