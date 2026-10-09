@@ -238,3 +238,13 @@ BOARD_SEPOLICY_DIRS += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/cpu_gpu_utility.sh:$(TARGET_COPY_OUT_VENDOR)/bin/cpu_gpu_utility.sh
 
+
+# Bluetooth patch for the BCM4345C0 (CYW43455) on the PINE64 WiFi/BT module.
+# The Ampak AP6255 patch from vendor/rockchip/common (1002.1001) stops
+# answering HCI a few minutes after power-on (LE Rand / 0xfd59 timeouts,
+# stack restart every ~10 min, with or without WiFi or connections).
+# This is the Cypress patch from RPi-Distro/bluez-firmware
+# (cdf61dc, "BCM43455 37.4MHz Raspberry Pi 3+-0190"). device.mk is inherited
+# before device/rockchip/common, so this copy takes precedence.
+PRODUCT_COPY_FILES += \
+    device/pine64/rockpro64/bluetooth/BCM4345C0.hcd:$(TARGET_COPY_OUT_VENDOR)/etc/firmware/BCM4345C0.hcd
