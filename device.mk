@@ -126,6 +126,11 @@ PRODUCT_PACKAGES += \
      android.hardware.camera.provider@2.4-external-service
 endif
 
+# Declare Ethernet: the Rockchip Ethernet settings page (Network & internet >
+# Ethernet) answered "Feature not available" without it.
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.ethernet.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.ethernet.xml
+
 ifeq ($(BUILD_WITH_GOOGLE_MARKET),false)
 # copy xml files for Vulkan features.
 PRODUCT_COPY_FILES += \
