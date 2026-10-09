@@ -1,10 +1,17 @@
 include device/pine64/rockpro64/BoardConfig.mk
 
-# RockPro64 has no on-board sensors
-BOARD_SENSOR_ST := false
+# RockPro64 has no on-board sensors, but device/rockchip/common still installs
+# android.hardware.sensors@1.0-service and declares ISensors in the VINTF
+# manifest. Without a sensors.<board> module that HAL exits ("Couldn't load
+# sensors module"), SystemSensorManager.nativeCreate() in system_server waits
+# for it forever and the Watchdog kills system_server (endless boot animation).
+# Keep the Tinker Board 2 sensor settings: the ST HAL builds and simply
+# reports no sensors when none are present.
+BOARD_SENSOR_ST := true
+BOARD_SENSOR_COMPASS_AK8963-64 := true
 BOARD_SENSOR_MPU_PAD := false
-BOARD_COMPASS_SENSOR_SUPPORT := false
-BOARD_GYROSCOPE_SENSOR_SUPPORT := false
+BOARD_COMPASS_SENSOR_SUPPORT := true
+BOARD_GYROSCOPE_SENSOR_SUPPORT := true
 CAMERA_SUPPORT_AUTOFOCUS:= false
 
 # No MIPI camera by default (rkisp HAL off); USB (UVC) cameras via the external HAL
